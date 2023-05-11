@@ -25,7 +25,6 @@ You can create Arrays using;
 ## Array Literals
 Its by far the simplest way to create an array.
 An array literal is simply "A comma separated list of array elements within square brackets"
-
     <code>
     * eg. let fruits = ["mangoes", "apples", "oranges"] - an array of string literals
     * let prime = [2, 3, 5, 7, 11] - an array of 5 numeric elements
@@ -34,17 +33,14 @@ An array literal is simply "A comma separated list of array elements within squa
     </code>
 Array values;
     - can be constants or arbitrary expressions
-
     <code>
     eg let base = 1024; let table = [base, base+1, base+2, base+3];
     </code>
     - any literal can contain object literals or other array literals
-
     <code>
     eg let b = [[1, {x: 1, y: 2,}], [2,{x: 3, y: 4}]]
     </code>
 Sparse arrays - is an array literal that contain multiple commas in a row, with no value between them.
-
     <code>
     eg let count = [1,,3] - elements at index 0 and 2. no element at index 1
     let undefs [,,] - an array with no elements but a length of 2
@@ -52,13 +48,11 @@ Sparse arrays - is an array literal that contain multiple commas in a row, with 
 
 ## The Spread Operator
 In ES6 you can use 'spread operator' ..., to include elements of one array within an array literal
-
     <code>
     eg let a = [1, 2, 3];
     let b = [0, ...a, 4]; -t this will be b == [0, 1, 2, 3, 4]
     </code>
 The spread operator is a convenient way to create a (shallow) copy of an array;
-
     <code>
     let original = [1, 2, 3];
     let copy = [...original]
@@ -66,10 +60,11 @@ The spread operator is a convenient way to create a (shallow) copy of an array;
     original[0] => 1
     </code>
 Spread operators also work on any iterable object. Also string are iterable and you can use the spread operator to turn a given string into an array of single character strings
+    <code>
     eg let digits = [.."012345AB"]
     digits => ["0","1", "2", "3", "4", "5", "A", "B"]
+    </code>
 Set objects are iterable, an easy way to remove duplicate elements from an array is to convert the array to a set and then immediately convert the set back to an array using the spread operator.
-
     <code>
     eg let letters = [..."hello world"]
     [...new Set(letters)] => ["h", "e", "l", "o", "", "w", "r", "d"]
