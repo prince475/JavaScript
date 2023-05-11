@@ -34,13 +34,14 @@ factorial(4)
 const square = function(x) {
     return x*x;
 };
-
+square(2)
 // Function expressions can include names, which is useful for recursion.
 const f = function fact(x) {
     if (x <= 1)
     return 1;
     else
     return x*fact(x-1); };
+    f(2)
 
 // Function expressions can also be used as arguments to other functions:
 [3,2,1].sort(function(a,b) {
@@ -51,3 +52,14 @@ const f = function fact(x) {
 let tensquared = (function(x) {
     return x*x;}(10)
     );
+
+
+// Arrow Functions
+const sum = (x, y) => { return x + y; };
+
+// Make a copy of an array with null elements removed.
+let filtered = [1,null,2,3].filter(x => x !== null); // filtered == [1,2,3]
+
+// Square some numbers:
+let squares = [1,2,3,4].map(x => x*x); // squares == [1,4,9,16]
+
