@@ -140,3 +140,110 @@ the invocation expression
 -NOTE: If the function returns because the interpreter reaches the end, the return value is undefined . If the function returns because the interpreter executes a return statement, then the return value is the value of the expression that follows the return or is undefined if the return statement has no value
 ```
 ### Method invocation
+A method is nothing more than a JavaScript function that is stored in a property of an object.
+What it means therefore is, if you have a function f and an object o, you can define a method named m of o as follows:
+
+```  defining the method m() of the object o
+     o.m = f;
+
+     we invoke the method as follows
+     o.m();
+
+     or, if m() expects two arguments, it might be invoked as follows
+     o.m(x, y);
+```
+
+- The code above shows an invocation expression that includes a function expression o.m and two argument expressions, x and y.
+- The function expression is itself a property access expression, and this means that the function is invoked as a method rather than as a regular function.
+- Arguments and return value of a method invocation are handled exactly as described for regular function invocation.
+
+The main difference between method invocation and function invocation, is the invocation context. Property access
+expressions consist of two parts: an object (in this case o ) and a property name ( m ). In a method-invocation expression like this, the object o becomes the invocation context, and the function body can refer to that object by using the keyword this .
+
+```
+    let calculator = { // An object literal
+        operand1: 1,
+        operand2: 1,
+        add() {    // We're using method shorthand syntax for this function
+            // Note the use of the this keyword to refer to the containing object.this.result = this.operand1 + this.operand2;
+        }
+    };
+    calculator.add(); // A method invocation to compute 1+1.
+    calculator.result // => 2
+```
+
+- Most method invocations use the dot notation for property access, but property access expressions that use square brackets also cause method invocation. The following are both method invocations;
+
+```
+    o["m"](x,y); // Another way to write o.m(x,y).
+
+    a[0](z) // Also a method invocation (assuming a[0] is a function).
+```
+
+- Method invocations may also involve more complex property access expressions:
+
+```
+    customer.surname.toUpperCase(); // Invoke method on customer.surname
+
+    f().m(); // Invoke method m() on return value of f()
+```
+
+- Methods and the this keyword are central to the object-oriented programming paradigm. Any function that is used as a method is effectively passed an implicit argument—the object through which it is invoked. Typically, a method performs some sort of operation on that object, and the method-invocation syntax is an elegant way to express the fact that a function is operating on an object.
+
+- consider the following example
+
+```
+    rect.setSize(width, height);
+    setRectSize(rect, width, height);
+
+    The hypothetical functions invoked in these two lines of code may perform exactly the same operation on the (hypothetical) object rect , but the method-invocation syntax in the first line more clearly indicates the idea that it is the object rect that is the primary focus of the operation.
+```
+### Method Chaining
+When you write a method that does not have a return value of its own, consider having the method return this . If you do this consistently throughout your API, you will enable a style of programming known as method chaining 1 in which an object can be named once and then multiple methods can be invoked on it:
+
+```
+    new Square().x(100).y(100).size(50).outline("red").fill("blue").draw();
+```
+
+- Note: If a nested function is invoked as a method, its this value is the object it was invoked on. If a nested function (that is not an arrow function) is invoked as a function, then its this value will be either the global object (non-strict mode) or undefined (strict mode).
+
+### Common Mistakes during invocation
+The assumption that a nested function defined within a method and invoked as a function can use this to obtain the invocation context of the method.
+
+```
+    example demonstration
+    let o = {                  // An Object o
+        m: function() {        // Method m of the Object
+            let self = this;   // save the 'this' value in a variable
+            this === o         // => true: 'this' is the object o.
+            f();               // Now call the helper function f()
+
+            function f() {     //A nested function f
+                this === o     // => false: 'this' is global or undefined
+                self === o     // => true: self is the outer 'this' value
+            }
+        }
+    };
+    o.m();                     // Invoke the method m on the object o.
+```
+
+- Inside the nested function f() , the this keyword is not equal to the object o . This iswidely considered to be a flaw in the JavaScript language, and it is important to be
+aware of i.
+- one common workaround. Within the method m , we assign the this value to a variable self , and within the nested function f , we can use self instead of this to refer to the containing object.
+- another workaround to this issue is to convert the nested function f into an arrow function, which will properly inherit the this value:
+
+```
+   const f = () => {
+        this === o // true, since arrow functions inherit this
+    };
+
+    Functions defined as expressions instead of statements are not hoisted, so in order to make this code work, the function definition for f will need to be moved within the method m so that it appears before it is invoked.
+```
+
+- Another workaround is to invoke the bind() method of the nested function to define a new function that is implicitly invoked on a specified object:
+
+```
+    const f = (function() {
+        this === o // true, since we bound this function to the outer this
+    }).bind(this);
+```
