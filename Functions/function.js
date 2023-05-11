@@ -63,3 +63,9 @@ let filtered = [1,null,2,3].filter(x => x !== null); // filtered == [1,2,3]
 // Square some numbers:
 let squares = [1,2,3,4].map(x => x*x); // squares == [1,4,9,16]
 
+// Nested function
+
+function hypotenuse(a, b) {
+    function square(x) { return x*x; }
+    return Math.sqrt(square(a) + square(b));
+}

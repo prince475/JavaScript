@@ -116,3 +116,27 @@ In Javascript it is also possible to nest functions within other functions.
 ```
 
 - Nested Functions, can access the parameters and variables of the function (or functions) they are nested within.
+
+## Invoking Functions
+The JavaScript code that makes up the body of a function is not executed when the function is defined, but rather when it is invoked.
+Javascript functions can be invoked in five ways:
+- As functions
+- As methods
+- As constructors
+- Indirectly through their call() and apply() methods
+- Implicitly, via JavaScript language features that do not   appear like normal function invocations
+
+### Function Invocation
+Functions are invoked as functions or as methods with an invocation expression.
+```
+- Invocation expressions consist of a function expression that evaluates to a function object followed by an open parenthesis, a comma-separated list of ZERO or more argument expressions, and a close parenthesis.
+
+- In an invocation, each argument expression (the ones between the parentheses) is evaluated, and the resulting values become the arguments to the function. These val‐
+ues are assigned to the parameters named in the function definition. In the body of the function, a reference to a parameter evaluates to the corresponding argument value.
+
+- For regular function invocation, the return value of the function becomes the value of
+the invocation expression
+
+-NOTE: If the function returns because the interpreter reaches the end, the return value is undefined . If the function returns because the interpreter executes a return statement, then the return value is the value of the expression that follows the return or is undefined if the return statement has no value
+```
+### Method invocation
