@@ -3,43 +3,43 @@ This is a fundamental datatype in Js.
 An array is an ordered collection of values.
 
 ### Properties of Arrays
-```
-    * `Each value is called an element`
-    * `An element has a numeric position in the array called an index`
-    * `Arrays in JS are untyped(an array element can be of any type and different elements of the same array maybe of different types)`
-    * `Array elements may even be objects or arrays.`
-    * `Arrays in JS are zero based and used 32-bit indexes. First element is always o indexed.`
-    * `Arrays are dynamic (can grow or shrink if need be)`
-    * `Every JavaScript array has a length property.`
-```
+
+* `Each value is called an element`
+* `An element has a numeric position in the array called an index`
+* `Arrays in JS are untyped(an array element can be of any type and different elements of the same array maybe of different types)`
+* `Array elements may even be objects or arrays.`
+* `Arrays in JS are zero based and used 32-bit indexes. First element is always o indexed.`
+* `Arrays are dynamic (can grow or shrink if need be)`
+* `Every JavaScript array has a length property.`
 
 ### Inheritance
 Arrays inherit properties from Array.prototype, which defines a rich set of array manipulation methods.
 
 ## Creating Arrays
 You can create Arrays using;
+
 ```
-    - Array literals
-    - The ... spread operator on an iterable object
-    - The Array() constructor
-    - The Array.of() and Array.from() factory methods
+- Array literals
+- The ... spread operator on an iterable object
+- The Array() constructor
+- The Array.of() and Array.from() factory methods
 ```
 ## Array Literals
 Its by far the simplest way to create an array.
 An array literal is simply "A comma separated list of array elements within square brackets"
-```
-    * `eg. let fruits = ["mangoes", "apples", "oranges"] - an array of string literals`
-    * `let prime = [2, 3, 5, 7, 11] - an array of 5 numeric elements`
-    * `let empty = [] - an array with no elements`
-    * `let misc = [1.1, true, "a",] - an array of various types * trailing comma`
-```
-Array values;
-    - can be constants or arbitrary expressions
-```
-    eg let base = 1024; let table = [base, base+1, base+2, base+3];
-```
 
-    - any literal can contain object literals or other array literals
+* `eg. let fruits = ["mangoes", "apples", "oranges"] - an array of string literals`
+* `let prime = [2, 3, 5, 7, 11] - an array of 5 numeric elements`
+* `let empty = [] - an array with no elements`
+* `let misc = [1.1, true, "a",] - an array of various types * trailing comma`
+
+Array values:
+- can be constants or arbitrary expressions
+
+```
+     eg let base = 1024; let table = [base, base+1, base+2, base+3];
+```
+- any literal can contain object literals or other array literals
 
 ```
     eg let b = [[1, {x: 1, y: 2,}], [2,{x: 3, y: 4}]]
