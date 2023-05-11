@@ -3,13 +3,13 @@ This is a fundamental datatype in Js.
 An array is an ordered collection of values.
 
 ### Properties of Arrays
-    * Each value is called an element
-    * An element has a numeric position in the array called an index
-    * Arrays in JS are untyped(an array element can be of any type and different elements of the same array maybe of different types)
-    * Array elements may even be objects or arrays.
-    * Arrays in JS are zero based and used 32-bit indexes. First element is always o indexed.
-    * Arrays are dynamic (can grow or shrink if need be)
-    * Every JavaScript array has a length property.
+    ** Each value is called an element
+    ** An element has a numeric position in the array called an index
+    ** Arrays in JS are untyped(an array element can be of any type and different elements of the same array maybe of different types)
+    ** Array elements may even be objects or arrays.
+    ** Arrays in JS are zero based and used 32-bit indexes. First element is always o indexed.
+    ** Arrays are dynamic (can grow or shrink if need be)
+    ** Every JavaScript array has a length property.
 
 
 ### Inheritance
@@ -17,11 +17,12 @@ Arrays inherit properties from Array.prototype, which defines a rich set of arra
 
 ## Creating Arrays
 You can create Arrays using;
+'''
     - Array literals
     - The ... spread operator on an iterable object
     - The Array() constructor
     - The Array.of() and Array.from() factory methods
-
+'''
 ## Array Literals
 Its by far the simplest way to create an array.
 An array literal is simply "A comma separated list of array elements within square brackets"
