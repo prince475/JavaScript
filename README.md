@@ -4,13 +4,13 @@ An array is an ordered collection of values.
 
 ### Properties of Arrays
 ```
-* `Each value is called an element`
-* `An element has a numeric position in the array called an index`
-* `Arrays in JS are untyped(an array element can be of any type and different elements of the same array maybe of different types)`
-* `Array elements may even be objects or arrays.`
-* `Arrays in JS are zero based and used 32-bit indexes. First element is always o indexed.`
-* `Arrays are dynamic (can grow or shrink if need be)`
-* `Every JavaScript array has a length property.`
+** Each value is called an element
+** An element has a numeric position in the array called an index
+** Arrays in JS are untyped(an array element can be of any type and different elements of the same array maybe of different types)
+** Array elements may even be objects or arrays.
+*** Arrays in JS are zero based and used 32-bit indexes. First element is always o indexed.
+*** Arrays are dynamic (can grow or shrink if need be)
+*** Every JavaScript array has a length property.
 ```
 ### Inheritance
 Arrays inherit properties from Array.prototype, which defines a rich set of array manipulation methods.
