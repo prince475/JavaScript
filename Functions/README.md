@@ -84,6 +84,7 @@ function parameters and the => arrow.
 
 ```js
     correct use
+    
     const f = x => { return {value: x}; }; f() retuns an object
     const g = x => ({ value: x }); g() retuns an object
 
@@ -91,6 +92,7 @@ function parameters and the => arrow.
 
 ``` js
     incorrect use
+    
     const h = x => { value: x }; h() returns nothing
     const i = x => { v: x, w: x }; Syntax error
 
@@ -101,9 +103,11 @@ function parameters and the => arrow.
 
 ```js
     Make a copy of an array with null elements removed.
+    
     let filtered = [1,null,2,3].filter(x => x !== null); // filtered == [1,2,3]
 
     Square some numbers:
+    
     let squares = [1,2,3,4].map(x => x*x); // squares == [1,4,9,16]
 ```
 ### Nested Functions
@@ -146,13 +150,16 @@ A method is nothing more than a JavaScript function that is stored in a property
 What it means therefore is, if you have a function f and an object o, you can define a method named m of o as follows:
 
 ```js 
-    defining the method m() of the object o
+     defining the method m() of the object o
+    
      o.m = f;
 
      we invoke the method as follows
+     
      o.m();
 
      or, if m() expects two arguments, it might be invoked as follows
+     
      o.m(x, y);
 ```
 
@@ -177,7 +184,7 @@ expressions consist of two parts: an object (in this case o ) and a property nam
 
 - Most method invocations use the dot notation for property access, but property access expressions that use square brackets also cause method invocation. The following are both method invocations;
 
-``js`
+```js
     o["m"](x,y); // Another way to write o.m(x,y).
 
     a[0](z) // Also a method invocation (assuming a[0] is a function).
@@ -215,6 +222,7 @@ The assumption that a nested function defined within a method and invoked as a f
 
 ```js
     example demonstration
+    
     let o = {                  // An Object o
         m: function() {        // Method m of the Object
             let self = this;   // save the 'this' value in a variable
@@ -245,7 +253,7 @@ aware of i.
 
 - Another workaround is to invoke the bind() method of the nested function to define a new function that is implicitly invoked on a specified object:
 
-```
+```js
     const f = (function() {
         this === o // true, since we bound this function to the outer this
     }).bind(this);
