@@ -83,8 +83,8 @@ function parameters and the => arrow.
 - Also, if the body of your arrow function is a single return statement but the expression to be returned is an object literal, then you have to put the object literal inside parentheses to avoid syntactic ambiguity between the curly braces of a function body and the curly braces of an object literal:
 
 ``` correct use
-    const f = x => { return {value: x}; }; f() retuns an object
-    const g = x => ({ value: x }); g() retuns an object
+    const f = x => { return {value: x}; }; f() returns an object
+    const g = x => ({ value: x }); g() returns an object
 
 ```
 
@@ -247,3 +247,6 @@ aware of i.
         this === o // true, since we bound this function to the outer this
     }).bind(this);
 ```
+## Function Arguments and Parameters
+
+
