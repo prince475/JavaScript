@@ -13,11 +13,11 @@ access to any variables that are in scope where they are defined.
 
 ## Defining functions
 - using function keyword
-```
+```js
     fun(){}
 ```
 - using arrow functions
-```
+```js
     (()=>{})
 ```
 ### Function Declarations
@@ -31,7 +31,7 @@ Function declarations consist of a function keyword followed by:
 
 - Compute the distance between Cartesian points (x1,y1) and (x2,y2).
 
-```
+```js
 function distance(x1, y1, x2, y2) {
     let dx = x2 - x1;
     let dy = y2 - y1;
@@ -43,7 +43,7 @@ distance(1, 2, 3, 4)
 ```
 ### Function Expressions
 Looks a lot like function declarations, but they appear within the context of a larger expression or statement and the name is optional.
-```
+```js
     This function expression defines a function that squares its argument.
     Note that we assign it to a variable
 
@@ -55,25 +55,25 @@ Looks a lot like function declarations, but they appear within the context of a 
 ### Arrow Functions
 In ES6 you can define functions using a particualry compact syntax known as arrow functions. Here an arrow is used => to separate function parameter from the function body and the function key word is not used. since it is an expression instead of a statement there is also no need for a function name.
 The general form of an arrow function is a comma-separated list of function parameters in parenthesis, followed by the => arrow, followed by the function body in curly braces;
-```
+```js
     const sum = (x, y) => { return x + y; };
 ```
 
 - if the body of the function is a single return statement, you can omit the return keyword, the semicolon and its curly braces and simply write the body of the function as the expression whose value is to be returned.
 
-```
+```js
     const sum = (x, y) => x + y;
 ```
 
 - For a case where the function has exactly one parameter, you can omit the parentheses around the parameter list:
 
-```
+```js
     const polynomial = x => x*x + 2*x + 3;
 ```
 
 - However it is also important to note that, an arrow function with no arguments at all must be written with an empty pair of parentheses.
 
-```
+```js
     const constantFunc = () => 42;
 ```
 
@@ -82,13 +82,23 @@ function parameters and the => arrow.
 
 - Also, if the body of your arrow function is a single return statement but the expression to be returned is an object literal, then you have to put the object literal inside parentheses to avoid syntactic ambiguity between the curly braces of a function body and the curly braces of an object literal:
 
+<<<<<<< HEAD
 ``` correct use
     const f = x => { return {value: x}; }; f() returns an object
     const g = x => ({ value: x }); g() returns an object
+=======
+```js
+    correct use
+    
+    const f = x => { return {value: x}; }; f() retuns an object
+    const g = x => ({ value: x }); g() retuns an object
+>>>>>>> 9c9d29e4cb80316d2648999ac7d107e16e748818
 
 ```
 
-``` incorrect use
+``` js
+    incorrect use
+    
     const h = x => { value: x }; h() returns nothing
     const i = x => { v: x, w: x }; Syntax error
 
@@ -97,17 +107,19 @@ function parameters and the => arrow.
 
 - The concise syntax of arrow functions makes them ideal when you need to pass one function to another function, which is a common thing to do with array methods like map() , filter() , and reduce()
 
-```
+```js
     Make a copy of an array with null elements removed.
+    
     let filtered = [1,null,2,3].filter(x => x !== null); // filtered == [1,2,3]
 
     Square some numbers:
+    
     let squares = [1,2,3,4].map(x => x*x); // squares == [1,4,9,16]
 ```
 ### Nested Functions
 In Javascript it is also possible to nest functions within other functions.
 
-```
+```js
     function hypotenuse(a, b) {
         function square(x) { return x*x; }
         return Math.sqrt(square(a) + square(b));
@@ -143,13 +155,17 @@ the invocation expression
 A method is nothing more than a JavaScript function that is stored in a property of an object.
 What it means therefore is, if you have a function f and an object o, you can define a method named m of o as follows:
 
-```  defining the method m() of the object o
+```js 
+     defining the method m() of the object o
+    
      o.m = f;
 
      we invoke the method as follows
+     
      o.m();
 
      or, if m() expects two arguments, it might be invoked as follows
+     
      o.m(x, y);
 ```
 
@@ -160,7 +176,7 @@ What it means therefore is, if you have a function f and an object o, you can de
 The main difference between method invocation and function invocation, is the invocation context. Property access
 expressions consist of two parts: an object (in this case o ) and a property name ( m ). In a method-invocation expression like this, the object o becomes the invocation context, and the function body can refer to that object by using the keyword this .
 
-```
+```js
     let calculator = { // An object literal
         operand1: 1,
         operand2: 1,
@@ -174,7 +190,7 @@ expressions consist of two parts: an object (in this case o ) and a property nam
 
 - Most method invocations use the dot notation for property access, but property access expressions that use square brackets also cause method invocation. The following are both method invocations;
 
-```
+```js
     o["m"](x,y); // Another way to write o.m(x,y).
 
     a[0](z) // Also a method invocation (assuming a[0] is a function).
@@ -182,7 +198,7 @@ expressions consist of two parts: an object (in this case o ) and a property nam
 
 - Method invocations may also involve more complex property access expressions:
 
-```
+```js
     customer.surname.toUpperCase(); // Invoke method on customer.surname
 
     f().m(); // Invoke method m() on return value of f()
@@ -192,7 +208,7 @@ expressions consist of two parts: an object (in this case o ) and a property nam
 
 - consider the following example
 
-```
+```js
     rect.setSize(width, height);
     setRectSize(rect, width, height);
 
@@ -201,7 +217,7 @@ expressions consist of two parts: an object (in this case o ) and a property nam
 ### Method Chaining
 When you write a method that does not have a return value of its own, consider having the method return this . If you do this consistently throughout your API, you will enable a style of programming known as method chaining 1 in which an object can be named once and then multiple methods can be invoked on it:
 
-```
+```js
     new Square().x(100).y(100).size(50).outline("red").fill("blue").draw();
 ```
 
@@ -210,8 +226,9 @@ When you write a method that does not have a return value of its own, consider h
 ### Common Mistakes during invocation
 The assumption that a nested function defined within a method and invoked as a function can use this to obtain the invocation context of the method.
 
-```
+```js
     example demonstration
+    
     let o = {                  // An Object o
         m: function() {        // Method m of the Object
             let self = this;   // save the 'this' value in a variable
@@ -232,7 +249,7 @@ aware of i.
 - one common workaround. Within the method m , we assign the this value to a variable self , and within the nested function f , we can use self instead of this to refer to the containing object.
 - another workaround to this issue is to convert the nested function f into an arrow function, which will properly inherit the this value:
 
-```
+```js
    const f = () => {
         this === o // true, since arrow functions inherit this
     };
@@ -242,7 +259,7 @@ aware of i.
 
 - Another workaround is to invoke the bind() method of the nested function to define a new function that is implicitly invoked on a specified object:
 
-```
+```js
     const f = (function() {
         this === o // true, since we bound this function to the outer this
     }).bind(this);
