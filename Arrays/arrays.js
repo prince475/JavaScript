@@ -52,3 +52,11 @@ console.log(typeof +hello);
     b.pop();
 
 
+// Iterating Arrays
+    let letters = [..."Hello world"];  // An array of letters
+    let string = '';
+    for (let letter of letters) {
+        string += letter
+    }
+    string    // => "Hello world"; we reassembled the original text
+    
