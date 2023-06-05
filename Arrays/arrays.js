@@ -59,4 +59,9 @@ console.log(typeof +hello);
         string += letter
     }
     string    // => "Hello world"; we reassembled the original text
-    
+
+// deleting Arrays 
+ let a = [1, 2, 3];
+    delete a[2];               // a now has no element at index 2
+    2 in a                     // => false: no array index 2 is defined
+    a.length                   // => 3: delete does not affect array lengt
