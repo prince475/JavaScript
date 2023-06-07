@@ -4,6 +4,16 @@ console.log(typeof hello);
 console.log(typeof parseInt (hello));
 console.log(typeof +hello);
 
+//Array .length
+
+   [].length               // => 0: the array has no elements
+   ["a", "b", "c"].length  // => 3: highest index is 2, length is 3
+
+    a = [1,2,3,4,5];         // start with a 5-element array.
+    a.length = 3;            // a is now [1,2,3].
+    a.length = 0;            // Delete all elements. a is [].
+    a.length = 5;            // Length is 5, but no elements, like new Array(5).
+
 // Reading and writing arrays
 
     let a = ["earth"];        // Starting with one element array
@@ -60,7 +70,7 @@ console.log(typeof +hello);
     }
     string    // => "Hello world"; we reassembled the original text
 
-// deleting Arrays 
+// deleting Arrays
  let a = [1, 2, 3];
     delete a[2];               // a now has no element at index 2
     2 in a                     // => false: no array index 2 is defined
